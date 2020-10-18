@@ -1,6 +1,11 @@
 import fitz
 import os
 
+'''
+fitz is a python wrapper package over PyMuPDF
+    (pip install fitz) or (no conda package)
+    this package handles the opening and picture extraction for PDFS
+'''
 filePath = r'file_folders'
 file = r'pdf_file'
 

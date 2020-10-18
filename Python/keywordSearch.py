@@ -13,6 +13,14 @@ from pdfminer.layout import LAParams
 from pdfminer.pdfpage import PDFPage
 from io import StringIO
 
+'''
+pdfminer and pdfminer.six are packages to handle pdf operations and both are needed
+    (pip install pdfminer and pip install pdfminer.six)
+    (conda install -c conda-forge pdfminer and conda install -c conda-forge pdfminer.six)
+pandas is a pthon package for dataframe files (xlsx, csv, text, etc.)
+    (pip install pandas) or (conda install -c anaconda pandas)
+'''
+
 # extracts the text from PDF
 def convert_pdf_to_txt(path):
     rsrcmgr = PDFResourceManager()
@@ -38,9 +46,9 @@ def convert_pdf_to_txt(path):
     return text
 
 # path to your pdf files
-path = r'D:\Research Papers\AUVs'
+path = r'pdf_file_paths'
 # where you want the excel file saved
-savePath = r'D:\Dropbox\UUV Project\Lists'
+savePath = r'path_to_excel_file'
 
 searchedFileFolder = []
 pdfFiles = [os.path.join(root, name)
@@ -49,7 +57,7 @@ pdfFiles = [os.path.join(root, name)
              if name.endswith((".pdf"))]
 
 # list of keywords, can either be a list or single keyword
-keywords = ['hotel load', 'base load']
+keywords = ['multiple', 'keywords']
 for file in pdfFiles:
     try:
         text = extract_text(file)
@@ -61,6 +69,6 @@ for file in pdfFiles:
 # takes a dictionary in, right now it's set for just the path to the files where keywords are in
 # can be set however you want, maybe using os.path.splitext()
 df = pd.DataFrame({'Files':searchedFileFolder})
-df.to_excel(os.path.join(savePath, 'hotelPower.xlsx'), index=False)
+df.to_excel(os.path.join(savePath, 'pdf_list.xlsx'), index=False)
 
 #print(df)
