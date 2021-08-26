@@ -1,6 +1,5 @@
 import os
 import re
-import sys
 
 # requires pandas
 import pandas as pd
